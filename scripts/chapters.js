@@ -32,7 +32,9 @@ function arg(k, d) {
 
   const outDir = path.join(__dirname, '..', 'out');
   fs.mkdirSync(outDir, { recursive: true });
-  fs.writeFileSync(path.join(outDir, 'chapters.json'), JSON.stringify(nodes, null, 1), 'utf8');
-  console.log(`\n已保存 out/chapters.json`);
+  const safe = course.name.replace(/[\\/:*?"<>|\s]+/g, '_');
+  const file = `chapters_${safe || 'course'}.json`;
+  fs.writeFileSync(path.join(outDir, file), JSON.stringify({ course: course.name, nodes }, null, 1), 'utf8');
+  console.log(`\n已保存 out/${file}`);
   await browser.close();
 })();

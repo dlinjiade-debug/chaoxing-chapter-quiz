@@ -8,6 +8,7 @@
     "chapters": "node scripts/chapters.js",
     "quiz": "node scripts/quiz.js",
     "submit": "node scripts/submit.js",
+    "redo": "node scripts/redo.js",
     "score": "node scripts/score.js"
   },
   "keywords": ["chaoxing", "xuexitong", "学习通", "超星", "automation", "playwright", "asr"],

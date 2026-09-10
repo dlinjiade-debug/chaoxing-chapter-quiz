@@ -19,6 +19,7 @@
 ```
 chaoxing-chapter-quiz/
 ├─ config.example.json      # 配置模板（复制为 config.json，后者不入库）
+├─ answers.example.json     # 答案文件格式示例
 ├─ package.json             # Node 依赖：playwright
 ├─ requirements.txt         # Python 依赖：requests / vosk / imageio-ffmpeg
 ├─ scripts/
@@ -27,6 +28,7 @@ chaoxing-chapter-quiz/
 │  ├─ chapters.js           # 查看章节树与「已完成任务点 x/N」
 │  ├─ quiz.js               # 抓某节点的题目、qid、选项、音频 objectId
 │  ├─ submit.js             # 按答案文件填答并提交，打印成绩
+│  ├─ redo.js               # 已提交的测验「重做」改错并再次提交
 │  ├─ score.js              # 只读查看状态与成绩
 │  └─ asr.py                # 下载音频 + ffmpeg 转码 + vosk 转写
 └─ out/                     # 运行产物（已 gitignore）
@@ -107,7 +109,13 @@ node scripts/submit.js --course 课程A --node 1234567890 --answers out/answers.
 
 # 7. 随时查看成绩
 node scripts/score.js --course 课程A --node 1234567890
+
+# 8. 提交后发现错题？在剩余次数内改错重交
+node scripts/redo.js --course 课程A --node 1234567890 --answers out/answers_fix.json
 ```
+
+答案文件格式见 `answers.example.json`：`{ "题目qid": "true" | "false" | "A" ... }`，
+不想改的题直接不写即可（填答时会保留原值）。`redo.js` 会先检查剩余次数，用完就直接退出，不会白试。
 
 ---
 
@@ -138,6 +146,7 @@ node scripts/score.js --course 课程A --node 1234567890
 | 提交确认 | 弹窗按钮文字可能是「提交」也可能是「确定」，要轮询尝试 |
 | 暂存 | `a.btnSave` → `noSubmit()`；别用 innerText 找按钮，容器 div 会误命中 |
 | 批阅页 | `最终成绩<span><i>分数</i>`、`class="scoreNum"` 是每题得分、`重做 <i>(剩余 N 次)` 是剩余机会 |
+| 重做 | 批阅页里的重做按钮是 `a.jb_btn_bg`，点完还要再点一次「确定」 |
 
 ---
 
