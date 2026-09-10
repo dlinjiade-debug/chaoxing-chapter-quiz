@@ -36,6 +36,41 @@ chaoxing-chapter-quiz/
 
 ---
 
+## 安装（作为 WorkBuddy / CodeBuddy 技能）
+
+本仓库同时是一个标准技能包（根目录 `SKILL.md`，已通过官方 `package_skill.py` 校验）。三种装法：
+
+**A. 下载技能包 zip（最简单）**
+
+从 [Releases](https://github.com/dlinjiade-debug/chaoxing-chapter-quiz/releases) 下载 `chaoxing-chapter-quiz.zip`，解压到技能目录：
+
+```bash
+# WorkBuddy
+mkdir -p ~/.workbuddy/skills && unzip -o chaoxing-chapter-quiz.zip -d ~/.workbuddy/skills
+# CodeBuddy
+mkdir -p ~/.codebuddy/skills && unzip -o chaoxing-chapter-quiz.zip -d ~/.codebuddy/skills
+```
+
+装好后应存在 `~/.workbuddy/skills/chaoxing-chapter-quiz/SKILL.md`。
+
+**B. 用 skills CLI 从仓库安装**
+
+```bash
+npx skills add dlinjiade-debug/chaoxing-chapter-quiz -g -y
+```
+
+**C. 直接克隆**
+
+```bash
+git clone https://github.com/dlinjiade-debug/chaoxing-chapter-quiz
+cp -r chaoxing-chapter-quiz ~/.workbuddy/skills/
+```
+
+> 自行重新打包：`python <skill-creator>/scripts/package_skill.py . ./dist`
+> 打包前先把要打的内容复制成干净目录，否则会把 `.git` 一起塞进 zip。
+
+---
+
 ## 快速开始
 
 ### 1. 安装依赖
