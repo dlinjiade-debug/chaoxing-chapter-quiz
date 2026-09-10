@@ -1,0 +1,18 @@
+{
+  "//": "复制为 config.json 后填入自己的信息。config.json 已被 .gitignore 忽略，绝不入库。",
+  "storageState": "./chaoxing_state.json",
+  "schoolHost": "your-school.fanya.chaoxing.com",
+  "cpi": "000000000",
+  "courses": [
+    {
+      "name": "示例课程",
+      "courseId": "000000000",
+      "clazzId": "000000000",
+      "ckenc": "00000000000000000000000000000000"
+    }
+  ],
+  "asr": {
+    "modelPath": "C:/asr/vosk-model-small-en-us-0.15",
+    "note": "模型目录必须是纯 ASCII 路径，含中文会导致 vosk 报 'does not contain model files'"
+  }
+}

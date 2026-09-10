@@ -1,0 +1,14 @@
+config.json
+chaoxing_state.json
+*.ck.json
+.storageState.json
+out/
+.tmp/
+node_modules/
+__pycache__/
+*.pyc
+*.mp3
+*.wav
+.vscode/
+.DS_Store
+.env

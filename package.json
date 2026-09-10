@@ -1,0 +1,19 @@
+{
+  "name": "chaoxing-chapter-quiz",
+  "version": "1.0.0",
+  "description": "超星/学习通「章节测验」自动化工具集：抓题、抓取听力音频、离线转写、按答案提交、读取成绩",
+  "main": "scripts/common.js",
+  "scripts": {
+    "courses": "node scripts/list_courses.js",
+    "chapters": "node scripts/chapters.js",
+    "quiz": "node scripts/quiz.js",
+    "submit": "node scripts/submit.js",
+    "score": "node scripts/score.js"
+  },
+  "keywords": ["chaoxing", "xuexitong", "学习通", "超星", "automation", "playwright", "asr"],
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "playwright": ">=1.40.0"
+  }
+}
